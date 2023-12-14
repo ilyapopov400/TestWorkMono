@@ -1,0 +1,26 @@
+{% extends 'parking/parking-base.html' %}
+
+{% block title %} client detail {% endblock %}
+
+{% block content_parking %}
+<h2>Просмотр одного клиента</h2>
+
+<div class="parking">
+    <li>ФИО: {{ client.name }}</li>
+    <li>Пол: {{ client.sex }}</li>
+    <li>Телефон: {{ client.phone }}</li>
+    <li>Адрес: {{ client.address }}</li>
+    {% if client.cars %}
+        <li>Автотранспорт клиента: {{ client.cars }}</li>
+        {% else %}
+        <li>автотранспорт отсутствует</li>
+    {% endif %}
+</div>
+<div class="parking">
+    <form method="post">
+        {% csrf_token %}
+        <p>удалить клиента: "{{ object }}"?</p>
+        <input type="submit" value="Удалить!">
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'parking/parking-base.html' %}
+<comment>страница для добавления данных о клиенте</comment>
+{% block title %} client writer {% endblock %}
+
+{% block content_parking %}
+<h2>Занесите данные о клиенте</h2>
+<div class="parking">
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            {% for field in form %}
+            <p>{{ field.label_tag }} {{ field }}</p>
+            {% endfor %}
+        </div>
+        <div>
+            <button type="submit">внести данные о клиенте</button>
+        </div>
+        <div>
+            <button type="reset">очистить форму</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

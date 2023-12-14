@@ -1,0 +1,32 @@
+{% extends 'parking/parking-base.html' %}
+
+{% block title %} car {% endblock %}
+
+{% block content_parking %}
+<h2>Просмотр автомобилей</h2>
+{% if cars %}
+{% for car in cars %}
+<ul>
+    <div class="parking">
+        <li>Марка: {{ car.brand_car }}</li>
+        <li>Модель: {{ car.model_car }}</li>
+        <li>Цвет кузова: {{ car.color_car }}</li>
+        <li>Государственный номер РФ: {{ car.state_number }}</li>
+        <li>Статус автомобиля на стоянке:
+            {% if car.in_parking %}
+            присутствует на стоянке
+            {% else %}
+            отсутствует на стоянке
+            {% endif %}
+        </li>
+        <li>Владелец автомобиля: {{ car.client }}</li>
+        <a href="{% url 'car-detail' pk=car.pk%}">перейти к просмотру автомобиля</a>
+    </div>
+</ul>
+{% endfor %}
+{% else %}
+<div class="parking">
+    <h3>Записей с автомобилями еще нет</h3>
+</div>
+{% endif %}
+{% endblock %}

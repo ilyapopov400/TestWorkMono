@@ -1,0 +1,24 @@
+{% extends 'parking/parking-base.html' %}
+
+{% block title %} clients {% endblock %}
+
+{% block content_parking %}
+<h2>Просмотр клиентов автостоянки</h2>
+{% if clients %}
+    {% for client in clients %}
+    <ul>
+        <div class="parking">
+            <li>ФИО: {{ client.name }}</li>
+            <li>Пол: {{ client.sex }}</li>
+            <li>Телефон: {{ client.phone }}</li>
+            <li>Адрес: {{ client.address }}</li>
+            <a href="{% url 'clients-detail' pk=client.pk%}">перейти к просмотру информации о клиенте</a>
+        </div>
+    </ul>
+    {% endfor %}
+{% else %}
+<div class="parking">
+    <h3>Записей с клиентами автостоянки еще нет</h3>
+</div>
+{% endif %}
+{% endblock %}

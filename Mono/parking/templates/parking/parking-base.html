@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'parking/css/parking_base.css' %}">
+{% endblock %}
+
+{% block content %}
+{% block content_parking %} {% endblock %}
+
+<div class="futer">
+    <div>
+    <a href="{% url 'cars-show' %}">просмотр всех автомобилей</a> |
+    <a href="{% url 'clients-show' %}">просмотр всех клиентов</a>
+    </div>
+    <div>
+        <a href="{% url 'car-writer' %}">внести данные об автомобиле</a> |
+        <a href="{% url 'client-writer' %}">внести данные об клиенте</a>
+    </div>
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'parking/parking-base.html' %}
+
+{% block title %} car detail {% endblock %}
+
+{% block content_parking %}
+<h2>Просмотр одного автомобиля</h2>
+
+<div class="parking">
+    <li>Марка: {{ automobile.brand_car }}</li>
+    <li>Модель: {{ automobile.model_car }}</li>
+    <li>Цвет кузова: {{ automobile.color_car }}</li>
+    <li>Государственный номер РФ: {{ automobile.state_number }}</li>
+    <li>Статус автомобиля на стоянке:
+        {% if automobile.in_parking %}
+        присутствует на стоянке
+        {% else %}
+        отсутствует на стоянке
+        {% endif %}
+    </li>
+    <li>Владелец автомобиля: {{ automobile.client }}</li>
+</div>
+<div class="parking">
+    <form method="post">
+        {% csrf_token %}
+        <p>удалить автомобиль: "{{ object }}"?</p>
+    <input type="submit" value="Удалить!">
+</form>
+</div>
+{% endblock %}

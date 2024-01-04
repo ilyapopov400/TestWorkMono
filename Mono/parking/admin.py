@@ -5,12 +5,12 @@ from . import models
 
 
 class CarAdmin(admin.ModelAdmin):
-    list_display = ["brand_car", "state_number", "client", ]
+    list_display = ["brand_car", "state_number", ]
 
 
-class CarClient(admin.ModelAdmin):
+class ClientAdmin(admin.ModelAdmin):
     list_display = ["name", ]
 
 
 admin.site.register(models.Car, CarAdmin)
-admin.site.register(models.Client, CarClient)
+admin.site.register(models.Client, ClientAdmin)

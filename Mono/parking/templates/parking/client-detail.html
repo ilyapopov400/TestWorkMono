@@ -10,10 +10,13 @@
     <li>Пол: {{ client.sex }}</li>
     <li>Телефон: {{ client.phone }}</li>
     <li>Адрес: {{ client.address }}</li>
-    {% if client.cars %}
-        <li>Автотранспорт клиента: {{ client.cars }}</li>
-        {% else %}
-        <li>автотранспорт отсутствует</li>
+    {% if all_cars %}
+    <p>Автотранспорт клиента: </p>
+    {% for car in all_cars %}
+    <li>{{ car }}</li>
+    {% endfor %}
+    {% else %}
+    <li>автотранспорт отсутствует</li>
     {% endif %}
 </div>
 <div class="parking">

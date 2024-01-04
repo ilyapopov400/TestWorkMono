@@ -80,6 +80,20 @@ class ClientDetail(DetailView, DeleteView):
     context_object_name = 'client'
     success_url = '/parking/good/'
 
+    def _get_all_cars(self) -> list:
+        '''
+        :return: список автомашин клинта
+        '''
+        client = self.object
+        cars = models.Car.objects.filter(client=client)
+        return cars
+
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        context = self.get_context_data(object=self.object)
+        context['all_cars'] = self._get_all_cars()  # список автомашин клинта
+        return self.render_to_response(context)
+
 
 class GoodWriter(TemplateView):
     '''

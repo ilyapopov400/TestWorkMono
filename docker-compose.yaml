@@ -1,0 +1,11 @@
+version: '3.7'
+services:
+  app1:
+    container_name: www
+    image: "ilyapopov400/web:1"
+    ports:
+      - "8888:8080"
+    restart: always
+    volumes:
+      - ./:/app
+#      - /Users/ilapopov/Documents/TestWorkMono/Mono/db.sqlite3:/Mono/db.sqlite3
